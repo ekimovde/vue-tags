@@ -2,7 +2,7 @@
   <div
     ref="tagsList"
     class="tags-list"
-    :class="{ 'tags-list--align-width': alignment === 'width' }"
+    :class="{ 'tags-list--align-width': isAlignmentWidth }"
   >
     <v-btn
       v-for="(tag, index) in displayedTags"
@@ -61,6 +61,10 @@ export default {
     window.removeEventListener("resize", this.throttledUpdateContainerWidth);
   },
   computed: {
+    isAlignmentWidth() {
+      return this.alignment === "width";
+    },
+
     displayedTags() {
       let widthSum = 0;
       let tags = [];
